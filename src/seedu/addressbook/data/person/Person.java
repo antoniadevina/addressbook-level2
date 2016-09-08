@@ -1,5 +1,6 @@
 package seedu.addressbook.data.person;
 
+import seedu.addressbook.data.person.Printable;
 import seedu.addressbook.data.tag.UniqueTagList;
 
 import java.util.Objects;
@@ -14,7 +15,7 @@ public class Person implements ReadOnlyPerson {
     private Phone phone;
     private Email email;
     private Address address;
-
+    
     private final UniqueTagList tags;
     /**
      * Assumption: Every field must be present and not null.
@@ -26,7 +27,7 @@ public class Person implements ReadOnlyPerson {
         this.address = address;
         this.tags = new UniqueTagList(tags); // protect internal tags from changes in the arg list
     }
-
+    
     /**
      * Copy constructor.
      */
@@ -84,4 +85,16 @@ public class Person implements ReadOnlyPerson {
         return getAsTextShowAll();
     }
 
+    public void tryForFun (){
+    	System.out.println(getPrintableString(this.getName(), this.getPhone(), this.getAddress()));
+    }
+	
+    public String getPrintableString(Printable... data) {
+        String combinedData = new String(); 
+		for (Printable d : data) {
+            combinedData = combinedData + ", " + d.getPrintableString();
+        }
+		return combinedData;	   
+	}
+    
 }
