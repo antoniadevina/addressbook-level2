@@ -17,7 +17,9 @@ public class UtilsTest {
 	public void setup() {
 		utils = new Utils();
 	}
-
+	
+	/** testing the fist method in Utils **/ 
+	
 	@Test
 	public void noNullInput_StringInput() {
 		boolean result = Utils.isAnyNull ("my brother", "isn't", "studying");
@@ -44,8 +46,10 @@ public class UtilsTest {
 		assertTrue("is this true",result);
 	}
 	
+	/** testing the second method in Utils **/
+	
 	@Test
-	public void elementsAreUnique_DifferentElement() {
+	public void elementsAreUnique_sameType() {
 		Collection<String> collection = new ArrayList<>();
 		collection.add("lalala"); 
 		collection.add("lililili");
@@ -53,13 +57,25 @@ public class UtilsTest {
 		boolean result = Utils.elementsAreUnique(collection);
 		assertTrue("is this true",result);
 	}
+	
 	@Test
-	public void elementsAreNotUnique_DifferentElement() {
+	public void elementsAreNotUnique_sameType() {
 		Collection<String> collection = new ArrayList<>();
 		collection.add("lalala"); 
 		collection.add("lililili");
 		collection.add("hohohoh");
 		collection.add("lalala"); 
+		boolean result = Utils.elementsAreUnique(collection);
+		assertFalse("is this true",result);
+	}
+	
+	@Test
+	public void elementsAreUnique_intgerType() {
+		Collection<Integer> collection = new ArrayList<>();
+		collection.add(20); 
+		collection.add(10);
+		collection.add(15);
+		collection.add(11); 
 		boolean result = Utils.elementsAreUnique(collection);
 		assertFalse("is this true",result);
 	}
