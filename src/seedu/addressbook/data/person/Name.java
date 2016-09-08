@@ -73,10 +73,35 @@ public class Name {
     		 return true; 
     	 } else if (nameHasSpacesDiffence(name1, name2)) { 
     		 return true; 
+    	 } else if (nameHasSameInitialsAndAtLeaseOneName(name1,name2)){
+    		 return true; 
     	 }
     	 
     	 return false; 
      }
+
+	private boolean nameHasSameInitialsAndAtLeaseOneName(String name1, String name2) {
+		String[] arr1 = name1.split(" ");  
+		String[] arr2 = name2.split(" ");  
+		int i = 0; 
+		int count = 0; 
+		for (String name: arr1){
+			if (arr2[i] != null && arr2[i].substring(0, 1) != arr1[i].substring(0, 1)){ 
+				return true; 
+			} else { 
+				count++; 
+			}
+			i++; 
+		}
+		if (65 <= count*100/arr1.length){ 
+			for (String name: arr1){
+				if (arr2[i] == arr1[i]){ 
+					return false; 
+				}
+			}
+		}
+		return true;
+	}
 
 	private boolean nameHasSpacesDiffence(String name1, String name2) {
 		name1 = name1.replaceAll("\\s","");

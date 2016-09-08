@@ -29,4 +29,10 @@ public class _SimilarNameTest {
 		assertEquals("The name is the same", true, name.isSimilar(other));
 	}
 
+	@Test 
+	public void DifferentNameWithSameInitial() throws IllegalValueException {
+		Name name = new Name ("AnTOnia devi");
+		Name other = new Name ("Antonia DEVINa"); 
+		assertEquals("The name is the same", true, name.isSimilar(other));
+	}
 }
