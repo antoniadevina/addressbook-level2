@@ -1,6 +1,7 @@
 package seedu.addressbook;
 
 import seedu.addressbook.data.person.ReadOnlyPerson;
+import seedu.addressbook.data.tag.Tagging;
 import seedu.addressbook.storage.StorageFile.*;
 
 import seedu.addressbook.commands.*;
@@ -98,6 +99,7 @@ public class Main {
 			ui.showResultToUser(result);
 
 		} while (!ExitCommand.isExit(command));
+		System.out.println(Tagging.getFullTaggingList());
 	}
 	
 	/** Check if the addressbook.txt file still exist **/ 

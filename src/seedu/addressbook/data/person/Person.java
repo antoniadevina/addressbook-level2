@@ -1,6 +1,7 @@
 package seedu.addressbook.data.person;
 
 import seedu.addressbook.data.tag.UniqueTagList;
+import seedu.addressbook.data.tag.Tagging;
 
 import java.util.Objects;
 
@@ -25,6 +26,7 @@ public class Person implements ReadOnlyPerson {
         this.email = email;
         this.address = address;
         this.tags = new UniqueTagList(tags); // protect internal tags from changes in the arg list
+        Tagging.addAllTagsToTheEndMassage(name.toString(), tags);
     }
 
     /**

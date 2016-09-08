@@ -67,9 +67,10 @@ public class UniqueTagList implements Iterable<Tag> {
      * Constructs a shallow copy of the given tag list.
      */
     public UniqueTagList(UniqueTagList source) {
-        internalList.addAll(source.internalList);
-    }
+    	internalList.addAll(source.internalList);
 
+    }
+    
     /**
      * All tags in this list as a Set. This set is mutable and change-insulated against the internal list.
      */
