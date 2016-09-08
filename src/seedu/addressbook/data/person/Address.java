@@ -8,7 +8,7 @@ import seedu.addressbook.data.exception.IllegalValueException;
  * Represents a Person's address in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidAddress(String)}
  */
-public class Address {
+public class Address extends Contact{
 
     public static final String EXAMPLE = "123, Clementi Ave 3, #12-34, 231534";
     public static final String MESSAGE_ADDRESS_CONSTRAINTS = "Person addresses should be in this format: a/BLOCK, STREET, UNIT, POSTAL_CODE ";
@@ -16,12 +16,10 @@ public class Address {
 			+ " (?<unit>[^/]+)," + " (?<postalCode>[^/]+)";
     private static final Pattern ADDRESS_PATTERN = Pattern.compile(ADDRESS_VALIDATION_REGEX);
     
- //   public final String completeAddress;
     private final Block block = new Block(); 
     private final Street street = new Street(); 
     private final Unit unit = new Unit(); 
     private final PostalCode postalCode = new PostalCode(); 
-    private boolean isPrivate;
 
     /**
      * Validates given address.
@@ -29,12 +27,11 @@ public class Address {
      * @throws IllegalValueException if given address string is invalid.
      */
     public Address(String address, boolean isPrivate) throws IllegalValueException {
-        this.isPrivate = isPrivate;
+        super(address, isPrivate);
         Matcher addressMatch = ADDRESS_PATTERN.matcher(address);
         if (!isValidAddress(addressMatch)) {
             throw new IllegalValueException(MESSAGE_ADDRESS_CONSTRAINTS);
         }
-//        this.completeAddress = address;
         this.block.setBlockNumber(addressMatch.group("block"));
         this.street.setStreetNumber(addressMatch.group("street"));;
         this.unit.setBlockNumber(addressMatch.group("unit"));;
