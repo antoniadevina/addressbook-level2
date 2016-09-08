@@ -2,6 +2,7 @@ package seedu.addressbook.data.person;
 
 import seedu.addressbook.data.exception.IllegalValueException;
 
+import java.io.*; 
 import java.util.Arrays;
 import java.util.List;
 
@@ -60,5 +61,30 @@ public class Name {
     public int hashCode() {
         return fullName.hashCode();
     }
+    
+    /**
+     * Returns true of the other name is very similar to this name.
+     * Two names are considered similar if ...
+     */
+     public boolean isSimilar(Name other) {
+    	 String name1 = this.toString().toLowerCase(); 
+    	 String name2 = other.toString().toLowerCase(); 
+    	 if (name1.equals(name2)){ 
+    		 return true; 
+    	 } else if (nameHasSpacesDiffence(name1, name2)) { 
+    		 return true; 
+    	 }
+    	 
+    	 return false; 
+     }
+
+	private boolean nameHasSpacesDiffence(String name1, String name2) {
+		name1 = name1.replaceAll("\\s","");
+    	 name2 = name2.replaceAll("\\s","");
+    	 if (name1.equals(name2)){ 
+    		 return true; 
+    	 }
+		return false;
+	}
 
 }
